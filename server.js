@@ -15,19 +15,15 @@ io.on('connection', function(socket){
   
 io.on('connection', function(socket){
     socket.on('chat message', function(msg){
-      console.log('message: ' + msg);
+      io.emit('chat message', msg);
     });
-});
+  });
   
 io.on('connection', function(socket){
     socket.broadcast.emit('hi');
-});
-  
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
   });
-});
+  
+
 
 http.listen(8080, function(){
   console.log('listening on *:8080');
@@ -64,3 +60,16 @@ http.listen(8080, function(){
 // http.listen(8080, function(){
 //   console.log('listening on *:8080');
 // });
+
+
+
+// simple test 
+// const readline = require('readline').createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+//   })
+  
+//   readline.question(`What's your name?`, name => {
+//     console.log(`Hi ${name}!`)
+//     readline.close()
+//   })
