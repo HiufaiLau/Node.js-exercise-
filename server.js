@@ -29,8 +29,29 @@
 //   console.log('listening on *:8080');
 // });
 
+// -------------------HTTP GET request ----------------------------
+const https = require('https')
+const options = {
+  hostname: '127.0.0.1',
+    port: 5000
+    ,
+  path: '/',
+  method: 'GET'
+}
 
+const req = https.request(options, res => {
+  console.log(`statusCode: ${res.statusCode}`)
 
+  res.on('data', d => {
+    process.stdout.write(d)
+  })
+})
+
+req.on('error', error => {
+  console.error(error)
+})
+
+req.end()
 // -------------------simple Node.js code--------------------------
 // const http = require('http');
 // const hostname = '127.0.0.1';
@@ -52,10 +73,10 @@
 // const hostname = '127.0.0.1';
 // const port = 5000;
 // let http = require('http').createServer(app);
-// app.get('/', function(req, res){
-//   res.send(`<h1>Server is running at : ${hostname}:${port}/</h1>`);
+// app.get('/', function(res){
+//   res.send(`<h1>Server is listening on: ${hostname}:${port}/</h1>`);
 // });
-// app.get('/', function(req, res){
+// app.get('/', function(res){
 //     res.sendFile(__dirname + '/index.html');
 //   });
 // http.listen(port, function(){
