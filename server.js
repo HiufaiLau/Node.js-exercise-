@@ -52,7 +52,19 @@ console.log(chalk.yellow('hi!'))
 // -------------------HTTP GET request ----------------------------
 // 
 
-// -------------------simple Node.js code--------------------------
+// -------------------simple Node.js code >>> Create HTTP Web Server in Node.js--------------------------
+const http=require('http')
+const hostname = '127.0.0.1';
+const port = 7000;
+
+const server=http.createServer((function(request,response)
+{
+	response.writeHead(200,
+	{"Content-Type" : "text/plain"});
+	response.end(`Server is listening http://${hostname}:${port}/ `);
+}));
+server.listen(port);
+
 // const http = require('http');
 // const hostname = '127.0.0.1';
 // const port = 5000;
@@ -69,10 +81,10 @@ console.log(chalk.yellow('hi!'))
 
 
 // ------------------------ with Express code-------------------------
-// let app = require('express')();
+// const app = require('express')();
 // const hostname = '127.0.0.1';
 // const port = 5000;
-// let http = require('http').createServer(app);
+// const http = require('http').createServer(app);
 // app.get('/', function(res){
 //   res.send(`<h1>Server is listening on: ${hostname}:${port}/</h1>`);
 // });
@@ -115,14 +127,14 @@ console.log(chalk.yellow('hi!'))
 // ------------------with readline-sync------------------------
 // cant run nodemon !!!!!!!!!!
 
-let readlineSync = require('readline-sync');
+// let readlineSync = require('readline-sync');
  
-// Wait for user's response.
-let userName = readlineSync.question('May I have your name? ');
-console.log('Hi ' + userName + '!');
+// // Wait for user's response.
+// let userName = readlineSync.question('May I have your name? ');
+// console.log('Hi ' + userName + '!');
  
-// Handle the secret text (e.g. password).
-let favFood = readlineSync.question('What is your favorite food? ', {
-  hideEchoBack: true // The typed text on screen is hidden by `*` (default).
-});
-console.log('Oh, ' + userName + ' loves ' + favFood + '!');
+// // Handle the secret text (e.g. password).
+// let favFood = readlineSync.question('What is your favorite food? ', {
+//   hideEchoBack: true // The typed text on screen is hidden by `*` (default).
+// });
+// console.log('Oh, ' + userName + ' loves ' + favFood + '!');
