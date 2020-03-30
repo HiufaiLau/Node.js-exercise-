@@ -28,19 +28,25 @@
 
 
 // ------------------------ with Express code-------------------------
-// const app = require('express')();
-// const hostname = '127.0.0.1';
-// const port = 5000;
-// const http = require('http').createServer(app);
-// app.get('/', function(res){
-//   res.send(`<h1>Server is listening on: ${hostname}:${port}/</h1>`);
-// });
-// app.get('/', function(res){
-//     res.sendFile(__dirname + '/index.html');
-//   });
-// http.listen(port, function(){
-//   console.log('listening on *:' + port);
-// });
+// const express = require('express');
+// const app = express();
+// app.listen(3000, function() {
+//     console.log('listening on 3000')
+//   })
+const app = require('express')();
+const hostname = '127.0.0.1';
+const port = 5000;
+const http = require('http').createServer(app);
+app.get('/', function(req,res){
+  res.send(`<h1>Server is listening on: ${hostname}:${port}/</h1>`);
+});
+app.get('/', function(req,res){
+    res.sendFile(__dirname + '/index.html');
+});
+  
+http.listen(port, function(){
+  console.log('listening on *:' + port);
+});
 
 
 
